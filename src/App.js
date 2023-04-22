@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Board from "./lib/board/Board";
+
+const puzzle1 = [
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+];
 
 function App() {
+  const [puzzle, setPuzzle] = useState(puzzle1);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="App-title">Sudoku</h1>
+      <Board puzzle={puzzle} setPuzzle={setPuzzle} />
     </div>
   );
 }
