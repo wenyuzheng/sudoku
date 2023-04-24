@@ -47,7 +47,7 @@ const getNextEmpty = (puzzle) => {
   return true;
 };
 
-const verify = (puzzle) => {
+const solve = (puzzle) => {
   const empty = getNextEmpty(puzzle);
 
   if (empty === true) return puzzle;
@@ -68,3 +68,5 @@ const verify = (puzzle) => {
 
   return false;
 };
+
+export default solve;
