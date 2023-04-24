@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import _ from "lodash";
 
 import "./Board.css";
 import Cell from "./Cell";
@@ -15,46 +16,39 @@ const GridContainer = styled.div`
 `;
 
 const Board = ({ puzzle, setPuzzle }) => {
-  const [currPosition, setCurrPosition] = useState([null, null]);
-
-  const onClickCell = (row, column) => {
-    setCurrPosition([row, column]);
-  };
+  const [currPosition, setCurrPosition] = useState(null);
 
   const onClickKey = (number) => {
-    const [row, col] = currPosition;
-
-    console.log({ currPosition, row, col });
-
-    if (row !== null && col !== null) {
-      const newPuzzle = puzzle;
+    if (currPosition) {
+      const [row, col] = currPosition;
+      const newPuzzle = _.cloneDeep(puzzle);
       newPuzzle[row][col] = number;
       setPuzzle(newPuzzle);
-    } else {
-      console.log("need to select cell");
     }
   };
-
-  useEffect(() => {}, [puzzle]);
 
   return (
     <div>
       <GridContainer>
         {puzzle.map((row, i) => {
           return row.map((val, j) => {
+            const isCurrPosition =
+              currPosition && currPosition[0] === i && currPosition[1] === j;
+
+            const onClickCell = () => setCurrPosition([i, j]);
+
             return (
               <Cell
                 key={`${i}${j}`}
-                row={i}
-                col={j}
+                isCurrPosition={isCurrPosition}
                 value={val}
-                onClick={onClickCell}
+                onClickCell={onClickCell}
               />
             );
           });
         })}
       </GridContainer>
-      <Keyboard onClick={onClickKey} />
+      <Keyboard onClickKey={onClickKey} />
     </div>
   );
 };

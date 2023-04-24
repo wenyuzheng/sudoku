@@ -1,8 +1,13 @@
 import "./Cell.css";
 
-const Cell = ({ row, col, value = null, onClick }) => {
+const Cell = ({ isCurrPosition, value = null, onClickCell }) => {
+  const backgroundColor = isCurrPosition ? "grey" : "white";
+  const style = {
+    backgroundColor: backgroundColor,
+  };
+
   return (
-    <div className="cell" onClick={() => onClick(row, col)}>
+    <div className="cell" onClick={onClickCell} style={style}>
       {value}
     </div>
   );
