@@ -47,7 +47,7 @@ const getNextEmpty = (puzzle) => {
   return true;
 };
 
-const solve = (puzzle) => {
+const solver = (puzzle) => {
   const empty = getNextEmpty(puzzle);
 
   if (empty === true) return puzzle;
@@ -57,7 +57,7 @@ const solve = (puzzle) => {
 
   for (let k = 0; k < possibilities.length; k++) {
     puzzle[i][j] = possibilities[k];
-    const attemptedRes = solve(puzzle);
+    const attemptedRes = solver(puzzle);
 
     if (attemptedRes !== false) {
       return puzzle;
@@ -69,4 +69,4 @@ const solve = (puzzle) => {
   return false;
 };
 
-export default solve;
+export default solver;
