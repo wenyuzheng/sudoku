@@ -40,7 +40,7 @@ const getPossibleValues = (puzzle, i, j) => {
 const getNextEmpty = (puzzle) => {
   for (let i = 0; i < puzzle.length; i++) {
     for (let j = 0; j < puzzle.length; j++) {
-      if (puzzle[i][j] === 0) return [i, j];
+      if (puzzle[i][j] === 0 || puzzle[i][j] === null) return [i, j];
     }
   }
 

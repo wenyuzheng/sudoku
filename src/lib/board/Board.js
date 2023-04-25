@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 
-import "./Board.css";
 import Cell from "./Cell";
 import Keyboard from "./Keyboard";
 
@@ -15,15 +14,19 @@ const GridContainer = styled.div`
   justify-content: center;
 `;
 
-const Board = ({ puzzle, setPuzzle }) => {
+const Board = ({ initPuzzle, puzzle, setPuzzle }) => {
   const [currPosition, setCurrPosition] = useState(null);
 
   const onClickKey = (number) => {
     if (currPosition) {
       const [row, col] = currPosition;
-      const newPuzzle = _.cloneDeep(puzzle);
-      newPuzzle[row][col] = number;
-      setPuzzle(newPuzzle);
+
+      // Can only change the cells that were not in initPuzzle
+      if (initPuzzle[row][col] === null) {
+        const newPuzzle = _.cloneDeep(puzzle);
+        newPuzzle[row][col] = number;
+        setPuzzle(newPuzzle);
+      }
     }
   };
 
