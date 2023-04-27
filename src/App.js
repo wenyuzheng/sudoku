@@ -7,12 +7,13 @@ import verify from "./lib/function/verify";
 import useWindowSize from "./lib/hooks/useWindowSize";
 import NewGameButton from "./lib/NewGameButton";
 
-const holesNum = 1;
+const holesNum = 10;
 
 const [pokedPuzzle, correctSolution] = genPuzzle(holesNum);
 
 function App() {
   const [puzzle, setPuzzle] = useState(pokedPuzzle);
+  const [initPuzzle, setInitPuzzle] = useState(pokedPuzzle);
   const [solution, setSolution] = useState(correctSolution);
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -29,12 +30,13 @@ function App() {
       <h1 className="App-title">Sudoku</h1>
 
       {!isCompleted ? (
-        <Board initPuzzle={pokedPuzzle} puzzle={puzzle} setPuzzle={setPuzzle} />
+        <Board initPuzzle={initPuzzle} puzzle={puzzle} setPuzzle={setPuzzle} />
       ) : (
         <div>
           <NewGameButton
             holesNum={holesNum}
             setPuzzle={setPuzzle}
+            setInitPuzzle={setInitPuzzle}
             setSolution={setSolution}
             setIsCompleted={setIsCompleted}
           />

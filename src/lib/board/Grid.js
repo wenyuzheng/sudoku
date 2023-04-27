@@ -13,7 +13,12 @@ const GridContainer = styled.div`
   justify-content: center;
 `;
 
-const Grid = ({ puzzle, currPosition = null, setCurrPosition = null }) => {
+const Grid = ({
+  puzzle,
+  initPuzzle = null,
+  currPosition = null,
+  setCurrPosition = null,
+}) => {
   return (
     <div>
       <GridContainer>
@@ -21,6 +26,7 @@ const Grid = ({ puzzle, currPosition = null, setCurrPosition = null }) => {
           return row.map((val, j) => {
             const isCurrPosition =
               currPosition && currPosition[0] === i && currPosition[1] === j;
+            const editableCell = initPuzzle ? initPuzzle[i][j] === null : false;
 
             const onClickCell = () =>
               setCurrPosition ? setCurrPosition([i, j]) : null;
@@ -28,6 +34,9 @@ const Grid = ({ puzzle, currPosition = null, setCurrPosition = null }) => {
             return (
               <Cell
                 key={`${i}${j}`}
+                row={i}
+                col={j}
+                editableCell={editableCell}
                 isCurrPosition={isCurrPosition}
                 value={val}
                 onClickCell={onClickCell}

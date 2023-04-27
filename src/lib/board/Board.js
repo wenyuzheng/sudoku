@@ -24,6 +24,7 @@ const Board = ({ initPuzzle, puzzle, setPuzzle }) => {
     <div>
       <Grid
         puzzle={puzzle}
+        initPuzzle={initPuzzle}
         currPosition={currPosition}
         setCurrPosition={setCurrPosition}
       />

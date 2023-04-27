@@ -1,30 +1,40 @@
 import useWindowSize from "../hooks/useWindowSize";
 
-const Cell = ({ editableCell, isCurrPosition, value = null, onClickCell }) => {
+const Cell = ({
+  editableCell,
+  row,
+  col,
+  isCurrPosition,
+  value = null,
+  onClickCell,
+}) => {
   const [screenWidth, screenHeight] = useWindowSize();
 
   const squareSize =
     screenWidth < 480 ? (screenWidth - 30) / 9 : (screenWidth * 0.8) / 9;
 
-  // const backgroundColor = !isCurrPosition
-  //   ? "white"
-  //   : editableCell
-  //   ? "blue"
-  //   : "grey";
-
   const backgroundColor = isCurrPosition
-    ? "grey"
+    ? "#91bad6"
     : editableCell
-    ? "blue"
+    ? "#dfe9f5"
     : "white";
+
+  const borderTop = row % 3 === 0 ? "black 2px solid" : "black 0.1px solid";
+  const borderBottom = row === 8 ? "black 2px solid" : "black 0.1px solid";
+  const borderLeft = col % 3 === 0 ? "black 2px solid" : "black 0.1px solid";
+  const borderRight = col === 8 ? "black 2px solid" : "black 0.1px solid";
 
   const style = {
     display: "flex",
     width: `${squareSize}px`,
     height: `${squareSize}px`,
-    border: "black 1px solid",
     alignItems: "center",
     justifyContent: "center",
+    fontSize: squareSize * 0.5,
+    borderTop: borderTop,
+    borderBottom: borderBottom,
+    borderRight: borderRight,
+    borderLeft: borderLeft,
     backgroundColor: backgroundColor,
   };
 
