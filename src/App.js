@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./lib/board/Board";
+import Grid from "./lib/board/Grid";
 import genPuzzle from "./lib/function/genPuzzle";
 import verify from "./lib/function/verify";
+import useWindowSize from "./lib/hooks/useWindowSize";
 import NewGameButton from "./lib/NewGameButton";
 
 const holesNum = 1;
@@ -13,7 +15,6 @@ function App() {
   const [puzzle, setPuzzle] = useState(pokedPuzzle);
   const [solution, setSolution] = useState(correctSolution);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(null);
 
   useEffect(() => {
     if (!puzzle.flat().includes(null)) {
@@ -21,10 +22,7 @@ function App() {
     }
   }, [puzzle]);
 
-  useEffect(() => {
-    const result = verify(puzzle, solution);
-    setIsCorrect(result);
-  }, [isCompleted]);
+  console.log(useWindowSize());
 
   return (
     <div className="App">
@@ -38,9 +36,10 @@ function App() {
             holesNum={holesNum}
             setPuzzle={setPuzzle}
             setSolution={setSolution}
+            setIsCompleted={setIsCompleted}
           />
-          {isCorrect ? <h2>It is correct!</h2> : <h2>It is not correct!</h2>}
-          {/* <Board puzzle={solution} /> */}
+          {verify(puzzle, solution) ? <h2>Correct!</h2> : <h2>Inorrect!</h2>}
+          <Grid puzzle={solution} />
         </div>
       )}
     </div>
