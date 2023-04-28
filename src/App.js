@@ -4,7 +4,6 @@ import Board from "./lib/board/Board";
 import Grid from "./lib/board/Grid";
 import genPuzzle from "./lib/function/genPuzzle";
 import verify from "./lib/function/verify";
-import useWindowSize from "./lib/hooks/useWindowSize";
 import NewGameButton from "./lib/NewGameButton";
 
 const holesNum = 10;
@@ -23,8 +22,6 @@ function App() {
     }
   }, [puzzle]);
 
-  console.log(useWindowSize());
-
   return (
     <div className="App">
       <h1 className="App-title">Sudoku</h1>
@@ -33,15 +30,16 @@ function App() {
         <Board initPuzzle={initPuzzle} puzzle={puzzle} setPuzzle={setPuzzle} />
       ) : (
         <div>
+          <Grid puzzle={solution} />
+
           <NewGameButton
-            holesNum={holesNum}
+            // holesNum={holesNum}
             setPuzzle={setPuzzle}
             setInitPuzzle={setInitPuzzle}
             setSolution={setSolution}
             setIsCompleted={setIsCompleted}
           />
           {verify(puzzle, solution) ? <h2>Correct!</h2> : <h2>Inorrect!</h2>}
-          <Grid puzzle={solution} />
         </div>
       )}
     </div>

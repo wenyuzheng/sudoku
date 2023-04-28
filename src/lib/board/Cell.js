@@ -19,10 +19,10 @@ const Cell = ({
     ? "#dfe9f5"
     : "white";
 
-  const borderTop = row % 3 === 0 ? "black 2px solid" : "black 0.1px solid";
-  const borderBottom = row === 8 ? "black 2px solid" : "black 0.1px solid";
-  const borderLeft = col % 3 === 0 ? "black 2px solid" : "black 0.1px solid";
-  const borderRight = col === 8 ? "black 2px solid" : "black 0.1px solid";
+  const borderTop = row % 3 === 0 ? "#7a7171 2px solid" : "grey 0.1px solid";
+  const borderBottom = row === 8 ? "#7a7171 2px solid" : "grey 0.1px solid";
+  const borderLeft = col % 3 === 0 ? "#7a7171 2px solid" : "grey 0.1px solid";
+  const borderRight = col === 8 ? "#7a7171 2px solid" : "grey 0.1px solid";
 
   const style = {
     display: "flex",
@@ -31,6 +31,7 @@ const Cell = ({
     alignItems: "center",
     justifyContent: "center",
     fontSize: squareSize * 0.5,
+    color: "#37474f",
     borderTop: borderTop,
     borderBottom: borderBottom,
     borderRight: borderRight,
