@@ -6,7 +6,7 @@ import genPuzzle from "./lib/function/genPuzzle";
 import verify from "./lib/function/verify";
 import NewGameButton from "./lib/NewGameButton";
 
-const holesNum = 10;
+const holesNum = 1;
 
 const [pokedPuzzle, correctSolution] = genPuzzle(holesNum);
 
@@ -25,20 +25,18 @@ function App() {
   return (
     <div className="App">
       <h1 className="App-title">Sudoku</h1>
+      <NewGameButton
+        setPuzzle={setPuzzle}
+        setInitPuzzle={setInitPuzzle}
+        setSolution={setSolution}
+        setIsCompleted={setIsCompleted}
+      />
 
       {!isCompleted ? (
         <Board initPuzzle={initPuzzle} puzzle={puzzle} setPuzzle={setPuzzle} />
       ) : (
         <div>
           <Grid puzzle={solution} />
-
-          <NewGameButton
-            // holesNum={holesNum}
-            setPuzzle={setPuzzle}
-            setInitPuzzle={setInitPuzzle}
-            setSolution={setSolution}
-            setIsCompleted={setIsCompleted}
-          />
           {verify(puzzle, solution) ? <h2>Correct!</h2> : <h2>Inorrect!</h2>}
         </div>
       )}

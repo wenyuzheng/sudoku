@@ -1,8 +1,8 @@
 import { useState } from "react";
 import genPuzzle from "./function/genPuzzle";
+import "./NewGameButton.css";
 
 const NewGameButton = ({
-  // holesNum,
   setPuzzle,
   setInitPuzzle,
   setSolution,
@@ -28,17 +28,17 @@ const NewGameButton = ({
       {open ? (
         <ul className="difficulties">
           <li className="difficultyItem">
-            <button onClick={() => onClickHandler(10)}>Easy</button>
+            <div onClick={() => onClickHandler(1)}>Easy</div>
           </li>
           <li className="difficultyItem">
-            <button onClick={() => onClickHandler(40)}>Medium</button>
+            <div onClick={() => onClickHandler(40)}>Medium</div>
           </li>
           <li className="difficultyItem">
-            <button onClick={() => onClickHandler(60)}>Hard</button>
+            <div onClick={() => onClickHandler(60)}>Hard</div>
           </li>
         </ul>
       ) : (
-        <div>New Game</div>
+        <div className="newGameButton">New Game</div>
       )}
     </div>
   );

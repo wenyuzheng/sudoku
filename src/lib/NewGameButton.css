@@ -1,0 +1,27 @@
+.newGameButton {
+  display: inline-block;
+  border: grey 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  font-size: 15px;
+  color: #006db2;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+
+.difficultyItem {
+  list-style-type: none;
+  display: inline-block;
+  font-size: 15px;
+  border: grey 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 5px;
+}
+
