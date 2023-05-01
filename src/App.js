@@ -6,7 +6,7 @@ import genPuzzle from "./lib/function/genPuzzle";
 import verify from "./lib/function/verify";
 import NewGameButton from "./lib/NewGameButton";
 
-const holesNum = 1;
+const holesNum = 10;
 
 const [pokedPuzzle, correctSolution] = genPuzzle(holesNum);
 

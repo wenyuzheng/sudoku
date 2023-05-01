@@ -16,19 +16,19 @@ const NewGameButton = ({
 
   const onClickHandler = (holesNum) => {
     const [pokedPuzzle, correctSolution] = genPuzzle(holesNum);
-    console.log({ pokedPuzzle });
     setInitPuzzle(pokedPuzzle);
     setPuzzle(pokedPuzzle);
     setSolution(correctSolution);
     setIsCompleted(false);
+    setOpen(!open);
   };
 
   return (
-    <div onClick={handleOpen}>
+    <div>
       {open ? (
         <ul className="difficulties">
           <li className="difficultyItem">
-            <div onClick={() => onClickHandler(1)}>Easy</div>
+            <div onClick={() => onClickHandler(10)}>Easy</div>
           </li>
           <li className="difficultyItem">
             <div onClick={() => onClickHandler(40)}>Medium</div>
@@ -38,7 +38,9 @@ const NewGameButton = ({
           </li>
         </ul>
       ) : (
-        <div className="newGameButton">New Game</div>
+        <div onClick={handleOpen} className="newGameButton">
+          New Game
+        </div>
       )}
     </div>
   );
