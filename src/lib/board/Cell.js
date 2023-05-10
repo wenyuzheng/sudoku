@@ -10,8 +10,14 @@ const Cell = ({
 }) => {
   const [screenWidth, screenHeight] = useWindowSize();
 
+  const size = screenWidth;
+
   const squareSize =
-    screenWidth < 480 ? (screenWidth - 30) / 9 : (screenWidth * 0.8) / 9;
+    size <= 480
+      ? (size - 30) / 9
+      : size >= 1024
+      ? (size * 0.35) / 9
+      : (size * 0.8) / 9;
 
   const backgroundColor = isCurrPosition
     ? "#91bad6"
