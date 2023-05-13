@@ -10,14 +10,21 @@ const Cell = ({
 }) => {
   const [screenWidth, screenHeight] = useWindowSize();
 
-  const size = screenWidth;
+  let squareSize = (screenHeight * 0.5) / 9;
 
-  const squareSize =
-    size <= 480
-      ? (size - 30) / 9
-      : size >= 1024
-      ? (size * 0.35) / 9
-      : (size * 0.8) / 9;
+  if (screenWidth <= 480) {
+    // Mobile screen
+    squareSize = (screenWidth - 30) / 9;
+  } else if (screenWidth <= 768) {
+    // Tablet screen
+    squareSize = (screenWidth * 0.8) / 9;
+  } else if (screenWidth <= 1024) {
+    // Horizontal tablet screen
+    squareSize = (screenWidth * 0.5) / 9;
+  } else if (screenWidth <= 1440) {
+    // Desktop screen
+    squareSize = (screenWidth * 0.4) / 9;
+  }
 
   const backgroundColor = isCurrPosition
     ? "#91bad6"

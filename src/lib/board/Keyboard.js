@@ -6,7 +6,9 @@ const Keyboard = ({ onClickKey }) => {
   const margin = screenWidth >= 1024 ? screenWidth * 0.01 : screenWidth * 0.025;
   const keyMargin = 5;
   const keySize =
-    screenWidth >= 1024
+    screenWidth >= 1440
+      ? (screenWidth * 0.3) / 9
+      : screenWidth >= 1024
       ? (screenWidth * 0.5) / 9
       : (screenWidth - margin * 2 - keyMargin * 2 * 9) / 9;
 
